@@ -94,4 +94,4 @@ O aplicativo está disponível em [https://ouviporai.netlify.app/](https://ouvip
 
 Aproveite o "Ouvi Por Aí" para compartilhar e descobrir frases interessantes! Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para abrir uma issue no repositório do GitHub ou entrar em contato com os desenvolvedores.
 
-**Agradecemos por contribuir para o projeto "Ouvi Por Aí"!**
+**Agradeço por contribuir para o projeto "Ouvi Por Aí"!**
