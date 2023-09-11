@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ouvi Por Aí</title>
+    <link rel="stylesheet" href="./dist/output.css">
+</head>
+<body class="bg-violet-100">
+    <header class="flex flex-col items-center justify-between p-4 bg-violet-500 text-white">
+        <img src="./assets/logo/logoremovebg.png" alt="logo ouvi por aí" class="h-60">
+    </header>
+    <section class="flex flex-col  items-center justify-between p-4">
+        <h1 class="flex flex-col p-4 text-white text-2xl mb-4 bg-violet-500 rounded-md">Conta o que você ouviu?</h1> 
+        <textarea class="border border-slate-900 rounded-md p-2 shadow-lg shadow-slate-500" name="text-box" id="get-frase-textbox" cols="100" rows="10" maxlength="240" placeholder="Máx de 240 caracteres"></textarea><br />
+        <div class="mb-4">
+            <button class="bg-purple-950 hover:bg-violet-500 text-white py-2 px-4 rounded-md" type="submit" id="botao-enviar">Enviar</button> <br />
+        </div>
+    </section>
+    <section class="flex flex-col items-center justify-between p-4">
+        <header class="flex flex-col p-4 text-white text-2xl mb-4 bg-violet-500 rounded-md">
+            <h1>Veja aqui a fofoca contada!</h1>
+        </header>
+        <textarea class="border border-slate-900 rounded-md p-2 shadow-lg shadow-slate-500" name="text-box-exibir" id="exibir-frase-textbox" cols="100" rows="10" readonly></textarea> <br />
+        <div>
+            <label for="frase-id" class="bg-violet-500 font-semibold items-center text-white rounded-md py-2 px-4">ID da Frase:</label>
+            <input type="number" id="frase-id" min="0" name="frase-id" required placeholder="Números inteiros" class="border border-gray-300 rounded-md p-2"><br/> <br />
+            <button class="bg-purple-950 hover:bg-red-600 text-white py-2 px-4 rounded-md" id="botao-deletar-frase">Deletar Frase</button>
+            <button class="output-share bg-purple-950 hover:bg-violet-500 text-white py-2 px-4 rounded-md ml-16" id="botao-compartilhar">Compartilhar</button>
+        </div> 
+    </section>
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
