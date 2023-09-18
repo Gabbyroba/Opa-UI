@@ -1,35 +1,30 @@
-const apiUrl = 'https://apiopa.onrender.com';
+const apiUrl = 'https://finalopabackend.onrender.com';
+let idCounter = 0; // Contador para gerar IDs numéricos únicos
 
-// Função para obter uma frase aleatória
-function obterFraseAleatoria() {
-    fetch(`${apiUrl}/frases/aleatorias`)
-        .then(response => response.json())
-        .then(data => {
-            if (data && data !== "Nenhuma frase inusitada disponível no momento.") {
-                exibirFrase(data);
-            } else {
-                console.log("Nenhuma frase inusitada disponível no momento.");
-            }
-        })
-        .catch(error => console.error('Erro ao obter a frase:', error));
-}
-
-// Função para enviar uma nova frase
+// Enviar nova frase
 function enviarNovaFrase() {
     const frase = document.getElementById('get-frase-textbox').value;
 
-    fetch(`${apiUrl}/frases`, {
+    // Verifica se a frase não está vazia
+    if (!frase.trim()) {
+        console.error('Frase inválida. Insira uma frase.');
+        return;
+    }
+
+    const id = idCounter++; // Use o valor atual do contador como ID e, em seguida, incremente
+
+    fetch(`${apiUrl}/enviarfrases`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ frase }), 
+        body: JSON.stringify({ id, frase }), // Inclui o ID no objeto enviado
     })
         .then(response => response.json())
         .then(data => {
             console.log(data);
-          
-            // Limpa a primeira textarea
+
+            // Limpa o campo de entrada
             document.getElementById('get-frase-textbox').value = '';
 
             listarFrases();
@@ -43,7 +38,7 @@ function confirmarPostagem() {
 }
 
 function listarFrases() {
-    fetch(`${apiUrl}/frases`)
+    fetch(`${apiUrl}/listarfrases`)
         .then(response => response.json())
         .then(data => {
             if (Array.isArray(data)) {
@@ -62,23 +57,21 @@ function exibirFrase(frase) {
     textarea.value = frase;
 }
 
-
 confirmarPostagem();
 listarFrases();
 
-
 // Função para deletar uma frase pelo ID
 function deletarFrasePorID() {
-    const idFrase = parseInt(document.getElementById('frase-id').value);
+    const idFrase = parseInt(document.getElementById('frase-id').value); // Pegar o ID da entrada
 
     if (!isNaN(idFrase) && idFrase >= 0) {
-        fetch(`${apiUrl}/frases/${idFrase}`, {
+        fetch(`${apiUrl}/${idFrase}`, {
             method: 'DELETE',
         })
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                listarFrases(); 
+                listarFrases();
             })
             .catch(error => console.error('Erro ao deletar a frase:', error));
     } else {
@@ -99,18 +92,15 @@ function copyServerLink() {
     
     tempTextArea.value = serverLink;
     
-   document.body.appendChild(tempTextArea);
-   tempTextArea.select();
+    document.body.appendChild(tempTextArea);
+    tempTextArea.select();
 
     try {
-        
         document.execCommand("copy");
-        
         alert("Link copiado para a área de transferência: " + serverLink);
     } catch (err) {
         console.error("Erro ao copiar o link: ", err);
     } finally {
-        
         document.body.removeChild(tempTextArea);
     }
 }
