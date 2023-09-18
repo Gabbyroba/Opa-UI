@@ -43,19 +43,16 @@ function listarFrases() {
     fetch(`${apiUrl}/listarfrases`)
         .then(response => response.json())
         .then(data => {
-            // Verifica se a resposta contém frases
             if (Array.isArray(data)) {
-                // Formata as frases para exibição
-                const frasesFormatadas = data.map((frase, index) => `ID: ${frase.id} - ${frase.frase}`).join('\n');
-                
-                // Exibe as frases na caixa de texto
-                exibirFrase(frasesFormatadas);
+                const frasesComIDs = data.map((item, index) => `ID: ${index} - ${item}`).join('\n');
+                exibirFrase(frasesComIDs);
             } else {
                 console.log("Nenhuma frase inusitada disponível no momento.");
             }
         })
         .catch(error => console.error('Erro ao listar frases:', error));
 }
+
 
 // Função para exibir frases na caixa de texto
 function exibirFrase(frases) {
