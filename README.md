@@ -104,6 +104,7 @@ Este projeto utiliza as seguintes tecnologias:
 
 ## URL do Aplicativo
 
-Você pode acessar o aplicativo no seguinte link: [Ouvi Por Aí](https://ouviporai.netlify.app/)
+Você pode acessar o aplicativo no seguinte link: [Ouvi Por Aí](https://ouviporai.netlify.app/) <br />
+Há também uma versão mobile responsiva: [Ouvi por aí Mobile](http://ouviporaimobile.netlify.app)
 
 Divirta-se compartilhando e explorando frases inusitadas! Se tiver alguma dúvida ou sugestão, fique à vontade para me contatar. 🗨️🎉
